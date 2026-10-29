@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suara Gen Z 🍓⚡ — Bukan Lembek, Cuma Realistis!</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍓</text></svg>">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        hand: ['"Caveat"', 'cursive']
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FF4D8D',
+                            yellow: '#FFDE59',
+                            cyan: '#00F0FF',
+                            purple: '#8B5CF6',
+                            dark: '#121217',
+                            card: '#1E1E28'
+                        }
+                    },
+                    boxShadow: {
+                        'neo': '5px 5px 0px #000000',
+                        'neo-sm': '3px 3px 0px #000000',
+                        'neo-lg': '8px 8px 0px #000000',
+                        'neo-pink': '5px 5px 0px #FF4D8D',
+                        'neo-yellow': '5px 5px 0px #FFDE59',
+                        'neo-cyan': '5px 5px 0px #00F0FF',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Canvas Confetti for celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#FFFDF7] dark:bg-[#0D0E15] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen selection:bg-brand-yellow selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <aside aria-label="Announcement" class="bg-brand-pink text-white text-xs md:text-sm font-bold py-2 px-4 border-b-2 border-black flex items-center justify-between overflow-hidden">
+        <div class="flex items-center space-x-2 animate-pulse">
+            <span class="bg-black text-brand-yellow px-2 py-0.5 rounded text-[11px] uppercase tracking-wider font-display font-extrabold">Breaking Facts</span>
+            <span>⚡ Gen Z bukan generasi stroberi, stroberi itu harganya Rp90.000 per pack di supermarket mewah!</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-3">
+            <span class="text-white/80">#BukanGenerasiLembek</span>
+            <span class="text-white/80">#RealitaBukanMitos</span>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-[#FFFDF7]/90 dark:bg-[#0D0E15]/90 backdrop-blur-md border-b-2 border-black px-4 sm:px-8 py-3.5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-3xl transform group-hover:rotate-12 transition-transform duration-200">🍓</span>
+                <div>
+                    <span class="font-display font-extrabold text-xl tracking-tight bg-gradient-to-r from-brand-pink to-purple-600 bg-clip-text text-transparent">SUARA GEN Z</span>
+                    <span class="hidden md:inline-block text-[10px] font-bold bg-brand-yellow text-black border border-black px-1.5 py-0.2 rounded ml-1.5 align-middle shadow-neo-sm">DEFENSE FORCE</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Navigation Links Desktop -->
+        <div class="hidden lg:flex items-center gap-6 font-bold text-sm">
+            <a href="#mitos" class="hover:text-brand-pink transition-colors">🔥 Mitos vs Fakta</a>
+            <a href="#kalkulator" class="hover:text-brand-pink transition-colors">☕ Kopi vs Rumah</a>
+            <a href="#skakmat" class="hover:text-brand-pink transition-colors">💬 Skakmat Generator</a>
+            <a href="#bingo" class="hover:text-brand-pink transition-colors">🎯 Bingo Bullyan</a>
+            <a href="#curhat" class="hover:text-brand-pink transition-colors">📢 Dinding Suara</a>
+            <a href="#surat" class="hover:text-brand-pink transition-colors">💌 Surat Terbuka</a>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+            <button id="themeToggle" aria-label="Ganti Tema Gelap/Terang" class="p-2 border-2 border-black bg-white dark:bg-slate-800 rounded-lg shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
+                <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-brand-yellow"></i>
+                <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-800"></i>
+            </button>
+            <a href="#skakmat" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-brand-yellow hover:bg-yellow-400 text-black font-extrabold text-xs uppercase tracking-wider border-2 border-black rounded-lg shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                <span>Bela Diri!</span>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" aria-label="Buka Menu Navigasi" class="lg:hidden p-2 border-2 border-black bg-white dark:bg-slate-800 rounded-lg shadow-neo-sm">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden fixed inset-x-0 top-[95px] z-40 bg-[#FFFDF7] dark:bg-[#121217] border-b-4 border-black p-6 shadow-xl lg:hidden">
+        <div class="flex flex-col gap-4 font-extrabold text-base">
+            <a href="#mitos" class="mobile-nav-link py-2 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span>🔥 Mitos vs Fakta</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#kalkulator" class="mobile-nav-link py-2 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span>☕ Kopi vs Rumah Simulator</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#skakmat" class="mobile-nav-link py-2 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span>💬 Skakmat Jawaban Generator</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#bingo" class="mobile-nav-link py-2 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span>🎯 Bingo Bullyan Generasi</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#curhat" class="mobile-nav-link py-2 border-b border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span>📢 Dinding Suara & Curhat</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#surat" class="mobile-nav-link py-2 flex items-center justify-between">
+                <span>💌 Surat Terbuka untuk Boomer/Gen X</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-24">
+
+        <!-- HERO SECTION -->
+        <header class="relative pt-6 pb-12 sm:pt-12 sm:pb-16 text-center">
+            <!-- Decorative Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-black bg-white dark:bg-slate-900 shadow-neo-sm mb-6 transform -rotate-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                    Resmi: Portal Pembelaan Diri Generasi Z Indonesia 🇮🇩
+                </span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto">
+                Katanya Kami <span class="relative inline-block text-brand-pink underline decoration-wavy decoration-brand-yellow decoration-4">Lembek</span>, Padahal Dunia Lagi 
+                <span class="bg-brand-yellow text-black px-3 py-1 border-2 border-black inline-block transform rotate-2 shadow-neo-sm">Gak Masuk Akal!</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+                Bosan dibilang <i>"gampang kena mental"</i>, <i>"kutu loncat"</i>, atau <i>"miskin gara-gara kopi kekinian"</i>? 
+                Mari kita jawab tuduhan generasi atas dengan <strong>data objektif, logika dingin, dan humor berkelas</strong>.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#mitos" class="px-6 py-3.5 bg-brand-pink hover:bg-pink-600 text-white font-extrabold text-base border-2 border-black rounded-xl shadow-neo hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-neo-sm transition-all flex items-center gap-2">
+                    <i data-lucide="flame" class="w-5 h-5"></i>
+                    <span>Lihat Fakta Membungkam</span>
+                </a>
+                <a href="#kalkulator" class="px-6 py-3.5 bg-brand-cyan hover:bg-cyan-400 text-black font-extrabold text-base border-2 border-black rounded-xl shadow-neo hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-neo-sm transition-all flex items-center gap-2">
+                    <i data-lucide="calculator" class="w-5 h-5"></i>
+                    <span>Hitung Kopi vs Rumah</span>
+                </a>
+                <a href="#skakmat" class="px-6 py-3.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 font-extrabold text-base border-2 border-black rounded-xl shadow-neo hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-neo-sm transition-all flex items-center gap-2">
+                    <i data-lucide="message-square-quote" class="w-5 h-5 text-brand-purple"></i>
+                    <span>Jawaban Skakmat</span>
+                </a>
+            </div>
+
+            <!-- Quick Fact Barometer -->
+            <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="p-4 bg-white dark:bg-slate-900 border-2 border-black rounded-xl shadow-neo-sm text-left">
+                    <div class="text-brand-pink font-display font-extrabold text-2xl sm:text-3xl">+600%</div>
+                    <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Kenaikan harga rumah vs gaji sejak era 90-an</div>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-900 border-2 border-black rounded-xl shadow-neo-sm text-left">
+                    <div class="text-brand-purple font-display font-extrabold text-2xl sm:text-3xl">24/7</div>
+                    <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Notifikasi chat kerja via WA di luar jam kantor</div>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-900 border-2 border-black rounded-xl shadow-neo-sm text-left">
+                    <div class="text-emerald-500 font-display font-extrabold text-2xl sm:text-3xl">100%</div>
+                    <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Peduli mental health demi putus rantai toxic parenting</div>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-900 border-2 border-black rounded-xl shadow-neo-sm text-left">
+                    <div class="text-brand-cyan font-display font-extrabold text-2xl sm:text-3xl">88 Thn</div>
+                    <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Waktu puasa kopi buat lunasin DP rumah di Bodetabek</div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- SECTION 1: MITOS VS FAKTA (The Core Defense) -->
+        <section id="mitos" class="scroll-mt-24">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div class="inline-block bg-brand-pink text-white font-extrabold text-xs uppercase px-2.5 py-1 border-2 border-black rounded mb-2 shadow-neo-sm">
+                        Katalog Klarifikasi
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                        5 Mitos Terbesar Gen Z yang Harus Di-Pensiunkan 🛑
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-1">
+                        Kumpulan tuduhan paling klise dari tongkrongan keluarga dan ruang meeting kantor, dibedah tuntas.
+                    </p>
+                </div>
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2 text-xs font-bold" id="mythFilterContainer">
+                    <button class="filter-btn active px-3 py-1.5 rounded-lg border-2 border-black bg-brand-yellow text-black shadow-neo-sm transition-all" data-filter="all">Semua</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg border-2 border-black bg-white dark:bg-slate-800 shadow-neo-sm transition-all" data-filter="mental">Kesehatan Mental</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg border-2 border-black bg-white dark:bg-slate-800 shadow-neo-sm transition-all" data-filter="karir">Karir & Finansial</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg border-2 border-black bg-white dark:bg-slate-800 shadow-neo-sm transition-all" data-filter="sosial">Bahasa & Gaya Hidup</button>
+                </div>
+            </div>
+
+            <!-- Myths Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="mythsGrid">
+                
+                <!-- Myth 1 -->
+                <div class="myth-card bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo transition-transform hover:-translate-y-1 relative overflow-hidden" data-category="mental">
+                    <div class="absolute -top-3 -right-3 bg-red-500 text-white font-black text-xs px-4 py-1.5 rounded-full border-2 border-black rotate-12 shadow-neo-sm">
+                        TUDUHAN #1
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">🧠</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-purple">Mental Health & Emosi</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-red-600 dark:text-red-400 mb-2">
+                        "Gen Z Lembek, Dikit-dikit Kena Mental & Kurang Ibadah"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 italic">
+                        "Zaman bapak dulu dimarahin guru sampai disabet rotan tetap tegar, kamu cuma dikritik bos aja nangis di pojokan..."
+                    </p>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-600 dark:border-emerald-500/50 rounded-xl p-4">
+                        <div class="flex items-center gap-2 font-extrabold text-emerald-800 dark:text-emerald-400 text-sm mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            FAKTA & REALITA:
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                            Generasi dulu bukannya bebas depresi, tapi <strong>tidak memiliki literasi mental health</strong> dan tabu mencari bantuan. Banyak trauma yang dipendam akhirnya bermutasi jadi kekerasan verbal di rumah tangga, silent treatment, dan membebani anak. 
+                            Gen Z bukan rapuh, melainkan <strong>berani mengakui sakit demi memutus rantai trauma generasi (breaking generational curse)</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Myth 2 -->
+                <div class="myth-card bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo transition-transform hover:-translate-y-1 relative overflow-hidden" data-category="karir">
+                    <div class="absolute -top-3 -right-3 bg-red-500 text-white font-black text-xs px-4 py-1.5 rounded-full border-2 border-black rotate-12 shadow-neo-sm">
+                        TUDUHAN #2
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">💼</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-pink">Loyalitas & Dunia Kerja</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-red-600 dark:text-red-400 mb-2">
+                        "Gen Z Kutu Loncat, Gak Punya Loyalitas ke Kantor!"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 italic">
+                        "Baru setahun udah resign. Zaman dulu om bertahan 30 tahun di satu perusahaan sampai pensiun..."
+                    </p>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-600 dark:border-emerald-500/50 rounded-xl p-4">
+                        <div class="flex items-center gap-2 font-extrabold text-emerald-800 dark:text-emerald-400 text-sm mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            FAKTA & REALITA:
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                            Dulu bertahan 30 tahun dapat pensiun seumur hidup dan rumah dinas. Sekarang? Perusahaan bisa layoff ribuan karyawan via email blast dalam hitungan detik saat harga saham goyah. 
+                            Rata-rata kenaikan gaji internal cuma <strong>3-5%</strong> (kalah sama inflasi), sementara <em>job hopping</em> bisa menaikkan nilai pasar <strong>20-40%</strong>. Loyalitas itu resiprokal, bukan pengorbanan martir!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Myth 3 -->
+                <div class="myth-card bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo transition-transform hover:-translate-y-1 relative overflow-hidden" data-category="karir">
+                    <div class="absolute -top-3 -right-3 bg-red-500 text-white font-black text-xs px-4 py-1.5 rounded-full border-2 border-black rotate-12 shadow-neo-sm">
+                        TUDUHAN #3
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">☕</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-yellow">Finansial & Properti</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-red-600 dark:text-red-400 mb-2">
+                        "Susah Beli Rumah Karena Kebanyakan Jajan Kopi & Nonton Konser"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 italic">
+                        "Kalau uang kopimu ditabung tiap hari, kamu udah bisa DP rumah cluster sekarang!"
+                    </p>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-600 dark:border-emerald-500/50 rounded-xl p-4">
+                        <div class="flex items-center gap-2 font-extrabold text-emerald-800 dark:text-emerald-400 text-sm mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            FAKTA & REALITA:
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                            Harga rumah tahun 1995 rata-rata 3-5 kali gaji tahunan fresh graduate. Tahun sekarang? Rumah suburban sederhana mencapai <strong>15-25 kali gaji tahunan</strong> fresh graduate! 
+                            Kopi Rp25.000 sebulan cuma Rp750.000. Bahkan kalau puasa kopi seumur hidup, itu tidak akan menutup gap inflasi tanah yang naik gila-gilaan akibat spekulan properti.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Myth 4 -->
+                <div class="myth-card bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo transition-transform hover:-translate-y-1 relative overflow-hidden" data-category="karir">
+                    <div class="absolute -top-3 -right-3 bg-red-500 text-white font-black text-xs px-4 py-1.5 rounded-full border-2 border-black rotate-12 shadow-neo-sm">
+                        TUDUHAN #4
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">⏰</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-cyan">Etos Kerja & Lembur</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-red-600 dark:text-red-400 mb-2">
+                        "Gen Z Manja, Jam 5 Teng Langsung Pulang & Nolak Lembur"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 italic">
+                        "Belum ada loyalitas. Zaman saya dulu nginep di kantor demi proyek, ga dibayar lembur pun ikhlas..."
+                    </p>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-600 dark:border-emerald-500/50 rounded-xl p-4">
+                        <div class="flex items-center gap-2 font-extrabold text-emerald-800 dark:text-emerald-400 text-sm mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            FAKTA & REALITA:
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                            Pulang tepat waktu saat jam kerja selesai adalah <strong>hak profesional dan tanda efisiensi kerja</strong>, bukan kemalasan. Gen Z bekerja dengan automasi, AI, dan tool kolaboratif modern sehingga menyelesaikan pekerjaan lebih cepat. 
+                            Romantisasi <em>hustle culture</em> tanpa kompensasi layak cuma menghasilkan tagihan rumah sakit akibat GERD dan vertigo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Myth 5 -->
+                <div class="myth-card bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo transition-transform hover:-translate-y-1 relative overflow-hidden md:col-span-2" data-category="sosial">
+                    <div class="absolute -top-3 -right-3 bg-red-500 text-white font-black text-xs px-4 py-1.5 rounded-full border-2 border-black rotate-12 shadow-neo-sm">
+                        TUDUHAN #5
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">🗣️</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-500">Gaya Bahasa & Budaya</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-display text-red-600 dark:text-red-400 mb-2">
+                        "Gen Z Sok Keren Campur Bahasa Inggris & Bahasa Jaksel"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 italic">
+                        "Literally, which is, boundary, toxic... Ngomong bahasa Indonesia yang bener kenapa sih?!"
+                    </p>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-600 dark:border-emerald-500/50 rounded-xl p-4">
+                        <div class="flex items-center gap-2 font-extrabold text-emerald-800 dark:text-emerald-400 text-sm mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            FAKTA & REALITA:
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                            Bahasa itu hidup dan berevolusi. Tahun 80-90an ada bahasa prokem ("bokap", "nyokap", "gokil", "doku") yang dulunya juga diprotes generasi tua. 
+                            Gen Z tumbuh di era internet global tanpa batas; menyerap istilah psikologi dan terminologi teknologi dalam bahasa Inggris adalah adaptasi alami agar relevan di pasar kerja global.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: INTERACTIVE CALCULATOR (Kopi Susu vs Rumah) -->
+        <section id="kalkulator" class="scroll-mt-24">
+            <div class="bg-brand-yellow/20 dark:bg-slate-900 border-4 border-black rounded-3xl p-6 sm:p-10 shadow-neo-lg relative overflow-hidden">
+                <!-- Floating badge -->
+                <div class="inline-flex items-center gap-2 bg-brand-yellow text-black px-3 py-1 font-display font-extrabold text-xs uppercase border-2 border-black rounded shadow-neo-sm mb-4">
+                    <i data-lucide="scale" class="w-4 h-4"></i> Simulator Ilmiah
+                </div>
+                
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight mb-2">
+                        Kalkulator "Puasa Es Kopi Susu vs Beli Rumah" ☕🏠
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+                        Sering dibilang <i>"Kamu gak kebeli rumah gara-gara jajan kopi kekinian Rp25 ribu terus!"</i>? 
+                        Yuk kita hitung secara matematis berapa abad kamu harus puasa ngopi cuma demi sepetak tanah.
+                    </p>
+                </div>
+
+                <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Controls Column -->
+                    <div class="lg:col-span-6 space-y-6 bg-white dark:bg-[#1A1B26] p-6 rounded-2xl border-2 border-black shadow-neo-sm">
+                        
+                        <!-- Slider 1: Harga Kopi Harian -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="coffeePrice" class="text-xs sm:text-sm font-extrabold">Harga Kopi/Jajan Harian:</label>
+                                <span id="coffeePriceVal" class="font-display font-black text-brand-pink text-base">Rp 25.000</span>
+                            </div>
+                            <input type="range" id="coffeePrice" min="10000" max="60000" step="5000" value="25000" 
+                                class="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-pink border border-black">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+                                <span>Kopi sachet (Rp10rb)</span>
+                                <span>Kopi Kenangan (Rp25rb)</span>
+                                <span>Starbucks (Rp60rb)</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider 2: Target Harga Rumah -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="housePrice" class="text-xs sm:text-sm font-extrabold">Target Harga Rumah Suburban:</label>
+                                <span id="housePriceVal" class="font-display font-black text-brand-purple text-base">Rp 800.000.000</span>
+                            </div>
+                            <input type="range" id="housePrice" min="300000000" max="2500000000" step="50000000" value="800000000" 
+                                class="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-purple border border-black">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+                                <span>Rumah Subsidi (300jt)</span>
+                                <span>Cluster Pinggiran (800jt)</span>
+                                <span>Dekat Stasiun (2.5M)</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider 3: Target DP (%) -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="dpPercent" class="text-xs sm:text-sm font-extrabold">Target Uang Muka (DP):</label>
+                                <span id="dpPercentVal" class="font-display font-black text-emerald-600 dark:text-emerald-400 text-base">10% (Rp 80.000.000)</span>
+                            </div>
+                            <input type="range" id="dpPercent" min="5" max="25" step="5" value="10" 
+                                class="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500 border border-black">
+                        </div>
+
+                    </div>
+
+                    <!-- Results Column -->
+                    <div class="lg:col-span-6 bg-white dark:bg-[#1A1B26] p-6 sm:p-8 rounded-2xl border-2 border-black shadow-neo">
+                        <div class="text-center pb-4 border-b-2 border-dashed border-slate-200 dark:border-slate-700">
+                            <div class="text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                Waktu Puasa Ngopi yang Dibutuhkan Cuma Buat DP:
+                            </div>
+                            <div id="yearsToDp" class="text-4xl sm:text-5xl font-display font-black text-brand-pink my-2">
+                                8,8 Tahun
+                            </div>
+                            <div class="text-xs text-slate-500">
+                                (Dengan catatan: kamu ga pernah sakit, inflasi tanah 0%, dan ga ada krisis ekonomi global)
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-2 text-center">
+                            <div class="text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                Kalau Mau Beli CASH Tanpa Cicil:
+                            </div>
+                            <div id="yearsToCash" class="text-2xl sm:text-3xl font-display font-extrabold text-brand-purple">
+                                87,7 Tahun
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Yaa... kemungkinan besar kamu sudah menjadi fosil saat dananya terkumpul. 🦴
+                            </p>
+                        </div>
+
+                        <!-- Reality Verdict Banner -->
+                        <div class="mt-6 p-4 bg-brand-yellow/40 dark:bg-amber-950/40 border-2 border-black rounded-xl">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">💡</span>
+                                <div class="text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                                    <strong class="font-bold">Kesimpulan Ilmiah:</strong> 
+                                    Bukan kopinya yang bikin miskin, tapi rasio harga properti terhadap gaji yang sudah tidak masuk akal sejak tahun 2010. Jadi silakan nikmati kopimu dengan damai hari ini.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 3: GENERATOR JAWABAN SKAKMAT (Family & Office Comebacks) -->
+        <section id="skakmat" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <div class="inline-block bg-brand-purple text-white font-extrabold text-xs uppercase px-2.5 py-1 border-2 border-black rounded mb-2 shadow-neo-sm">
+                    Amunisi Percakapan
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                    Generator Jawaban Skakmat 💬💥
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
+                    Siap menghadapi reuni keluarga besar, hajatan, atau bos kolot di kantor? Pilih skenario dan dapatkan jawaban yang tepat.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-[#161722] border-3 border-black rounded-3xl p-6 sm:p-10 shadow-neo-lg max-w-4xl mx-auto">
+                
+                <!-- Step 1: Pilih Skenario -->
+                <div class="mb-6">
+                    <label for="scenarioSelect" class="block font-display font-bold text-base mb-2">
+                        1. Pilih Tuduhan / Nyinyiran yang Dihadapi:
+                    </label>
+                    <div class="relative">
+                        <select id="scenarioSelect" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border-2 border-black rounded-xl font-bold text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-pink appearance-none cursor-pointer shadow-neo-sm">
+                            <option value="0">"Kapan nikah? Umur segini bapak dulu udah punya rumah & anak dua!"</option>
+                            <option value="1">"Anak baru kok jam 5 teng langsung rapi-rapi tas mau pulang?"</option>
+                            <option value="2">"Zaman bapak dulu jalan kaki 10 km ke sekolah, kamu manja dikit-dikit ojol!"</option>
+                            <option value="3">"Gaji UMR kok dikit-dikit healing ke Bali atau nonton konser?"</option>
+                            <option value="4">"Kamu itu cuma kurang ibadah & kurang bersyukur, makanya gampang stres!"</option>
+                            <option value="5">"Baru 6 bulan kerja kok udah mau resign? Gak tahan banting!"</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-700 dark:text-slate-300">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Pilih Mode Tone -->
+                <div class="mb-8">
+                    <label class="block font-display font-bold text-base mb-2">
+                        2. Pilih Gaya Respons (Tone of Voice):
+                    </label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button class="tone-btn active p-3 border-2 border-black rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-1 bg-brand-yellow text-black shadow-neo-sm transition-all" data-tone="sopan">
+                            <span>😇 Santun & Bijak</span>
+                            <span class="text-[10px] font-normal opacity-80 hidden sm:inline">(Aman dari coret KK)</span>
+                        </button>
+                        <button class="tone-btn p-3 border-2 border-black rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-1 bg-white dark:bg-slate-800 shadow-neo-sm transition-all" data-tone="data">
+                            <span>📊 Data & Logika</span>
+                            <span class="text-[10px] font-normal opacity-80 hidden sm:inline">(Skakmat ilmiah)</span>
+                        </button>
+                        <button class="tone-btn p-3 border-2 border-black rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-1 bg-white dark:bg-slate-800 shadow-neo-sm transition-all" data-tone="savage">
+                            <span>🔥 Savage & Pedas</span>
+                            <span class="text-[10px] font-normal opacity-80 hidden sm:inline">(Hanya untuk yang siap ribut)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div class="relative bg-slate-50 dark:bg-slate-800/60 border-2 border-black rounded-2xl p-6 shadow-neo-sm">
+                    <div class="flex items-center justify-between mb-3 border-b pb-2 border-slate-200 dark:border-slate-700">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-pink flex items-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i> Kalimat Rekomendasi Jawaban:
+                        </span>
+                        <button id="copyComebackBtn" class="px-3 py-1 bg-white dark:bg-slate-700 hover:bg-slate-100 text-xs font-bold border border-black rounded shadow-neo-sm flex items-center gap-1.5 transition-all">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span id="copyBtnText">Salin Teks</span>
+                        </button>
+                    </div>
+
+                    <p id="comebackText" class="text-base sm:text-lg font-medium leading-relaxed italic text-slate-800 dark:text-slate-100">
+                        "Alhamdulillah Pak/Bu, kami memilih menyiapkan finansial dan kesiapan mental terlebih dahulu agar anak cucu nanti tumbuh sehat tanpa dibebani hutang keluarga. Kualitas keluarga jauh lebih utama daripada sekadar buru-buru tanggal nikah."
+                    </p>
+
+                    <!-- Tips konteks -->
+                    <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                        <i data-lucide="lightbulb" class="w-4 h-4 text-brand-yellow"></i>
+                        <span id="comebackTips">Ucapkan sambil tersenyum tenang dan menawarkan kue nastar agar suasana tetap cair.</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECTION 4: BINGO BULLYAN GENERASI (Interactive Game) -->
+        <section id="bingo" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <div class="inline-block bg-brand-cyan text-black font-extrabold text-xs uppercase px-2.5 py-1 border-2 border-black rounded mb-2 shadow-neo-sm">
+                    Game Refleksi Interaktif
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                    Bingo Bullyan Generasi 🎯
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
+                    Berapa banyak kalimat legendaris ini yang pernah kamu dengar langsung dari ortu, om/tante, atau bosmu? Klik untuk menandai!
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Score & Status Card -->
+                <div class="bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-4 sm:p-6 mb-6 shadow-neo flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-pink text-white font-display font-black text-2xl flex items-center justify-center border-2 border-black shadow-neo-sm" id="bingoScore">
+                            0/9
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Tingkat Kebal Bully Anda:</div>
+                            <div class="text-base sm:text-lg font-bold font-display" id="bingoStatus">
+                                Belum Teruji (Klik kotak di bawah!)
+                            </div>
+                        </div>
+                    </div>
+                    <button id="resetBingoBtn" class="px-4 py-2 text-xs font-bold border border-black rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 shadow-neo-sm">
+                        Reset Pilihan
+                    </button>
+                </div>
+
+                <!-- The 3x3 Bingo Grid -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 select-none" id="bingoGrid">
+                    
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">👴</span>
+                        <span>"Zaman bapak dulu jalan kaki 5 km..."</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">🧘</span>
+                        <span>"Dikit-dikit minta healing & burnout"</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">☕</span>
+                        <span>"Beli kopi mahal terus pantes gak kebeli rumah"</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">📱</span>
+                        <span>"Hp mulu yang diliat, ga ada masa depannya"</span>
+                    </button>
+
+                    <!-- FREE SPACE -->
+                    <button class="bingo-cell checked bg-brand-yellow text-black border-2 border-black rounded-xl p-3 sm:p-5 text-center font-black text-xs sm:text-sm shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="true">
+                        <span class="text-xl sm:text-2xl mb-1">🍓</span>
+                        <span>"GENERASI STROBERI" (Free Space)</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">🙏</span>
+                        <span>"Kurang bersyukur & kurang ibadah kamu mah"</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">💼</span>
+                        <span>"Kerja itu harus loyal lembur tanpa pamrih!"</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">💍</span>
+                        <span>"Kapan nikah? Jangan pilih-pilih nanti gak laku"</span>
+                    </button>
+
+                    <button class="bingo-cell bg-white dark:bg-[#161722] border-2 border-black rounded-xl p-3 sm:p-5 text-center font-bold text-xs sm:text-sm hover:border-brand-pink shadow-neo-sm transition-all flex flex-col items-center justify-center min-h-[105px] sm:min-h-[120px]" data-checked="false">
+                        <span class="text-xl sm:text-2xl mb-1">🛋️</span>
+                        <span>"Anak sekarang rebahan doang maunya instan"</span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 5: DINDING SUARA GEN Z (Interactive Wall of Voices) -->
+        <section id="curhat" class="scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div class="inline-block bg-brand-pink text-white font-extrabold text-xs uppercase px-2.5 py-1 border-2 border-black rounded mb-2 shadow-neo-sm">
+                        Ruang Curhat Kolektif
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                        Dinding Suara & Cerita Nyata Gen Z 📢
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-1">
+                        Bukan manja, kami cuma pejuang hidup di zaman yang serba mahal. Bagikan ceritamu secara anonim.
+                    </p>
+                </div>
+                <button id="openCurhatModalBtn" class="px-5 py-3 bg-brand-yellow hover:bg-yellow-400 text-black font-extrabold text-sm border-2 border-black rounded-xl shadow-neo hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-neo-sm transition-all flex items-center gap-2 self-start md:self-auto">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span>Tulis Curhatanmu</span>
+                </button>
+            </div>
+
+            <!-- Wall Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="wallGrid">
+                <!-- Preset Card 1 -->
+                <div class="bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3 text-xs text-slate-500">
+                            <span class="font-bold text-brand-pink flex items-center gap-1">
+                                <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Fresh Grad Agency
+                            </span>
+                            <span>2 jam lalu</span>
+                        </div>
+                        <p class="text-sm font-medium leading-relaxed mb-4 text-slate-800 dark:text-slate-200">
+                            "Dibilang gak tahan banting karena gak mau lembur sampai jam 10 malam tanpa uang lembur. Padahal tugas saya disuruh handle 4 klien sendirian dengan gaji UMR Jakarta. Kami mau kerja keras, tapi kami gak mau mati muda demi KPI orang lain."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3">
+                        <span class="text-xs text-slate-400 font-semibold">— Anonim (23 thn)</span>
+                        <button class="like-curhat-btn text-xs font-bold flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-brand-pink hover:text-white transition-colors" data-liked="false">
+                            <span>❤️</span> <span class="like-count">142</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preset Card 2 -->
+                <div class="bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3 text-xs text-slate-500">
+                            <span class="font-bold text-brand-purple flex items-center gap-1">
+                                <i data-lucide="home" class="w-3.5 h-3.5"></i> Sandwich Generation
+                            </span>
+                            <span>5 jam lalu</span>
+                        </div>
+                        <p class="text-sm font-medium leading-relaxed mb-4 text-slate-800 dark:text-slate-200">
+                            "Orang tua sering nanya kenapa belum beli mobil/rumah kayak sepupu. Mereka gak tahu 40% gaji saya tiap bulan buat bayar cicilan hutang keluarga dan biaya sekolah adik. Kami gak manja, kami cuma menanggung beban dua generasi sekaligus."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3">
+                        <span class="text-xs text-slate-400 font-semibold">— Pejuang Sandwich (25 thn)</span>
+                        <button class="like-curhat-btn text-xs font-bold flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-brand-pink hover:text-white transition-colors" data-liked="false">
+                            <span>❤️</span> <span class="like-count">289</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preset Card 3 -->
+                <div class="bg-white dark:bg-[#161722] border-2 border-black rounded-2xl p-6 shadow-neo flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3 text-xs text-slate-500">
+                            <span class="font-bold text-emerald-500 flex items-center gap-1">
+                                <i data-lucide="laptop" class="w-3.5 h-3.5"></i> Freelancer Digital
+                            </span>
+                            <span>1 hari lalu</span>
+                        </div>
+                        <p class="text-sm font-medium leading-relaxed mb-4 text-slate-800 dark:text-slate-200">
+                            "Tetangga ngira saya pengangguran karena tiap hari di rumah pakai kaos oblong. Padahal saya remote work ngoding untuk klien luar negeri dan bayar pajak resmi. Zaman udah berubah, sukses itu gak harus pakai seragam dinas atau macet-macetan jam 7 pagi."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3">
+                        <span class="text-xs text-slate-400 font-semibold">— Remote Coder (22 thn)</span>
+                        <button class="like-curhat-btn text-xs font-bold flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-brand-pink hover:text-white transition-colors" data-liked="false">
+                            <span>❤️</span> <span class="like-count">210</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 6: SURAT TERBUKA (Open Letter to Older Generations) -->
+        <section id="surat" class="scroll-mt-24">
+            <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white border-4 border-black rounded-3xl p-8 sm:p-12 shadow-neo-lg relative overflow-hidden">
+                <!-- Background visual element -->
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none select-none text-[180px]">
+                    🤝
+                </div>
+
+                <div class="max-w-3xl relative z-10 space-y-6">
+                    <div class="inline-block bg-brand-yellow text-black font-extrabold text-xs uppercase px-3 py-1 border-2 border-black rounded shadow-neo-sm">
+                        Pesan Rekonsiliasi & Empati
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight">
+                        Surat Terbuka untuk Orang Tua, Senior, dan Generasi Pendahulu Kami 💌
+                    </h2>
+
+                    <div class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
+                        <p>
+                            <strong>Kepada Bapak, Ibu, Om, Tante, dan para senior yang kami hormati,</strong>
+                        </p>
+                        <p>
+                            Website ini tidak dibuat untuk meremehkan perjuangan kalian. Kami sangat mengagumi bagaimana generasi kalian bekerja keras membanting tulang di era sebelum internet, melewati masa krisis moneter 1998, dan membangun fondasi yang memungkinkan kami lahir dan bersekolah hari ini.
+                        </p>
+                        <p>
+                            Namun, tolong pahami juga bahwa <strong>medan perang kami hari ini sudah jauh berbeda</strong>. 
+                            Kami menghadapi lonjakan harga tempat tinggal yang tidak masuk akal, krisis iklim global, disrupsi AI yang mengancam ribuan profesi sebelum kami sempat mapan, serta kompetisi global yang bergerak dalam hitungan milidetik.
+                        </p>
+                        <p>
+                            Ketika kami membicarakan kesehatan mental, kami bukan sedang merengek; kami sedang berusaha agar anak-anak kami kelak tidak mewarisi luka emosional yang sama. Ketika kami menolak lembur tak berbayar, kami bukan malas; kami hanya ingin tetap sehat secara fisik dan mental.
+                        </p>
+                        <p class="font-hand text-2xl sm:text-3xl text-brand-yellow pt-2">
+                            "Kita bukan musuh. Dunia ini sudah cukup keras — mari saling menguatkan, bukan saling meremehkan."
+                        </p>
+                        <p class="text-xs uppercase font-extrabold tracking-wider text-slate-400">
+                            — Hormat kami, Generasi Z Indonesia 🇮🇩
+                        </p>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <button id="shareOpenLetterBtn" class="px-6 py-3 bg-brand-pink hover:bg-pink-600 text-white font-extrabold text-sm border-2 border-black rounded-xl shadow-neo hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-2">
+                            <i data-lucide="share-2" class="w-4 h-4"></i>
+                            <span>Bagikan Surat Ini ke Grup WhatsApp Keluarga</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-24 border-t-2 border-black bg-white dark:bg-[#0D0E15] py-12 px-4 sm:px-8 text-center text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <span class="text-2xl">🍓</span>
+                <span class="font-display font-extrabold text-lg text-slate-800 dark:text-slate-100">SUARA GEN Z</span>
+            </div>
+            <p class="max-w-md mx-auto">
+                Dibuat dengan rasa solidaritas, secangkir es kopi susu gula aren, dan tekad pantang menyerah di tengah inflasi.
+            </p>
+            <div class="flex justify-center gap-4 text-xs font-bold">
+                <a href="#mitos" class="hover:text-brand-pink">Mitos vs Fakta</a>
+                <span>•</span>
+                <a href="#kalkulator" class="hover:text-brand-pink">Kalkulator Kopi</a>
+                <span>•</span>
+                <a href="#skakmat" class="hover:text-brand-pink">Skakmat Generator</a>
+                <span>•</span>
+                <a href="#surat" class="hover:text-brand-pink">Surat Terbuka</a>
+            </div>
+            <div class="text-[11px] text-slate-400 pt-4">
+                © 2026 Suara Gen Z Indonesia. Bebas dibagikan untuk kepentingan edukasi dan pertahanan diri di arisan keluarga.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: Tulis Curhatan -->
+    <div id="curhatModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-[#161722] border-3 border-black rounded-2xl max-w-lg w-full p-6 shadow-neo-lg relative animate-in fade-in zoom-in duration-200">
+            <button id="closeCurhatModalBtn" class="absolute top-4 right-4 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <h3 class="font-display font-black text-xl mb-1">📢 Tulis Curhatan & Pembelaanmu</h3>
+            <p class="text-xs text-slate-500 mb-4">Identitasmu 100% anonim. Keluarkan keluh kesahmu dengan sopan namun jujur.</p>
+
+            <form id="curhatForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold mb-1">Nama Samaran & Umur:</label>
+                    <input type="text" id="curhatAuthor" required placeholder="Contoh: Pejuang Kopi (22 thn)" 
+                        class="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border-2 border-black rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-pink">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Kategori / Pekerjaan:</label>
+                    <input type="text" id="curhatRole" required placeholder="Contoh: Fresh Grad / Content Creator / Mahasiswa" 
+                        class="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border-2 border-black rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-pink">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Cerita / Pembelaanmu:</label>
+                    <textarea id="curhatContent" rows="4" required placeholder="Tulis apa yang sering generasi atas salah pahami tentang perjuanganmu..."
+                        class="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border-2 border-black rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-pink"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" id="cancelCurhatBtn" class="px-4 py-2 border-2 border-black rounded-lg font-bold text-xs bg-slate-100 dark:bg-slate-800">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2 border-2 border-black rounded-lg font-bold text-xs bg-brand-pink text-white hover:bg-pink-600 shadow-neo-sm">
+                        Kirim ke Dinding Suara
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white font-bold text-sm px-5 py-3 rounded-xl border-2 border-brand-yellow shadow-neo flex items-center gap-2">
+        <i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i>
+        <span id="toastMessage">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
